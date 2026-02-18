@@ -83,4 +83,37 @@ frontend/
 │  ├─ pages/      # Route-level components (Dashboard, FreeTrial)
 │  ├─ hooks/      # Custom logic (useAuthContext)
 │  └─ services/   # Axios API client configuration
-📊 Database SchemaMembershipPlan: Defines plan name, duration, and price.Subscription: Links users to plans with start_date and is_active status.FreeTrialRequest: Stores leads and triggers 7-day starter plans.Attendance: Tracks presence of members in specific fitness classes.🔑 API Reference (Selected Endpoints)MethodEndpointDescriptionPOST/api/v1/free-trial/Creates request + 7-day subscriptionGET/api/v1/accounts/dashboard/Returns stats and recent activityGET/api/v1/membership-plans/my_subscription/Current user plan details📝 ContributingFork the repository.Create a Feature Branch (git checkout -b feature/AmazingFeature).Commit your changes (git commit -m 'Add some AmazingFeature').Push to the branch (git push origin feature/AmazingFeature).Open a Pull Request.📧 ContactDeveloper: MD Arafat HossenEmail: your_email@example.comGitHub: your-usernameDeveloped with ❤️ by MD Arafat Hossen
+📊 Database Schema
+MembershipPlan: Defines plan name, duration, and price.
+
+Subscription: Links users to plans with start_date and is_active status.
+
+FreeTrialRequest: Stores leads and triggers 7-day starter plans.
+
+Attendance: Tracks presence of members in specific fitness classes.
+
+🔑 API Reference (Selected Endpoints)
+Method Endpoint Description
+POST /api/v1/free-trial/Creates request + 7-day subscription
+GET /api/v1/accounts/dashboard/Returns stats and recent activity
+GET /api/v1/membership-plans/my_subscription/Current user plan details
+
+Contributing
+Fork the repository.
+
+Create a Feature Branch (git checkout -b feature/AmazingFeature).
+
+Commit your changes (git commit -m 'Add some AmazingFeature').
+
+Push to the branch (git push origin feature/AmazingFeature).
+
+Open a Pull Request.
+
+📧 Contact
+Developer: MD Arafat Hossen
+
+Email: mdarafathossensojib2020@gmail.com
+
+GitHub: mdarafathossensojib
+
+Developed with ❤️ by MD Arafat Hossen
