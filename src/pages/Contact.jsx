@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import ContactForm from "../components/Contact/ContactForm";
 import ContactInfo from "../components/Contact/ContactInfo";
+import { Helmet } from "react-helmet";
 
 const contactInfo = [
   { icon: MapPin, label: "Address", value: "123 Fitness Blvd, Gulsan, Dhaka-1200, Bangladesh" },
@@ -31,6 +32,9 @@ const Contact = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Contact</title>
+    </Helmet>
       <main>
         <PageHeader
           label="Get in Touch"

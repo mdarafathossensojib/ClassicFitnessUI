@@ -3,6 +3,7 @@ import { Shield, Calendar } from "lucide-react"
 import authApiClient from "../../../services/auth_api_client"
 import Loading from "../../Alert/Loading"
 import ErrorAlert from "../../Alert/ErrorAlert"
+import { Helmet } from "react-helmet"
 
 export default function MySubscription() {
   const [subscription, setSubscription] = useState(null)
@@ -32,6 +33,10 @@ export default function MySubscription() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>My Subscription</title>
+    </Helmet>
     <div className="min-h-screen bg-zinc-950 p-8">
       <h1 className="text-3xl font-bold text-white mb-8">
         My Subscription
@@ -90,5 +95,6 @@ export default function MySubscription() {
         </div>
       )}
     </div>
+    </>
   )
 }

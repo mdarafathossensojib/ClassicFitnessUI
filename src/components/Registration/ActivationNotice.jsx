@@ -3,6 +3,7 @@ import { useState } from "react";
 import useAuthContext from "../../hooks/useAuthContext";
 import SuccessAlert from "../Alert/SuccessAlert";
 import ErrorAlert from "../Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 const ActivationNotice = () => {
 
@@ -24,6 +25,10 @@ const ActivationNotice = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Activation Notice</title>
+    </Helmet>
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 py-12">
       <div className="w-full max-w-md rounded-lg border border-zinc-800 bg-zinc-900 p-8 text-center">
 
@@ -54,6 +59,7 @@ const ActivationNotice = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

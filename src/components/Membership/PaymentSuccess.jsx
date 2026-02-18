@@ -1,8 +1,13 @@
 import { CheckCircle, ArrowRight, BadgeCheck } from "lucide-react"
+import { Helmet } from "react-helmet"
 import { Link } from "react-router"
 
 export default function PaymentSuccess() {
   return (
+    <>
+    <Helmet>
+      <title>Payment Successfull</title>
+    </Helmet>
     <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-6">
       <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-8 text-center shadow-xl">
 
@@ -41,5 +46,6 @@ export default function PaymentSuccess() {
         </p>
       </div>
     </div>
+    </>
   )
 }

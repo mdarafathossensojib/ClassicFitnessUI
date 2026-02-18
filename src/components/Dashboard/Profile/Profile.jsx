@@ -7,6 +7,7 @@ import ErrorAlert from "../../Alert/ErrorAlert";
 import SuccessAlert from "../../Alert/SuccessAlert";
 import useAuthContext from "../../../hooks/useAuthContext";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 export default function Profile() {
   const { user, updateUserProfile } = useAuthContext();
@@ -85,6 +86,10 @@ export default function Profile() {
   if (loading && !userData) return <Loading />;
 
   return (
+    <>
+    <Helmet>
+      <title>Profile</title>
+    </Helmet>
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white">My Profile</h1>
@@ -225,5 +230,6 @@ export default function Profile() {
         <UpdatePassword />
       </div>
     </div>
+    </>
   );
 }

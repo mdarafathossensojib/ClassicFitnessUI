@@ -5,6 +5,7 @@ import Loading from "../../Alert/Loading"
 import EditFeedback from "./EditFeedback"
 import ErrorAlert from "../../Alert/ErrorAlert"
 import SuccessAlert from "../../Alert/SuccessAlert"
+import { Helmet } from "react-helmet"
 
 export default function AdminFeedback() {
 
@@ -73,6 +74,10 @@ export default function AdminFeedback() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Admin Feedback</title>
+    </Helmet>
     <div className="p-8">
 
       {/* Header */}
@@ -192,5 +197,6 @@ export default function AdminFeedback() {
         </div>
       )}
     </div>
+    </>
   )
 }

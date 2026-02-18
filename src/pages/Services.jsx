@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import apiClient from "../services/api_client"
 import Loading from "../components/Alert/Loading";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 export default function Services() {
   const [services, setServices] = useState([])
@@ -42,6 +43,10 @@ export default function Services() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Services</title>
+    </Helmet>
     <section className="bg-zinc-950 py-12">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
       <div className="container mx-auto px-6">
@@ -67,5 +72,6 @@ export default function Services() {
         </div>
       </div>
     </section>
+    </>
   )
 }

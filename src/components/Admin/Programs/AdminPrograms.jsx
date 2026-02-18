@@ -6,6 +6,7 @@ import Loading from "../../Alert/Loading";
 import authApiClient from "../../../services/auth_api_client";
 import ErrorAlert from "../../Alert/ErrorAlert";
 import SuccessAlert from "../../Alert/SuccessAlert";
+import { Helmet } from "react-helmet";
 
 export default function AdminPrograms() {
   const [showModal, setShowModal] = useState(false);
@@ -70,6 +71,10 @@ export default function AdminPrograms() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Admin Programs</title>
+    </Helmet>
     <div className="p-8">
       <div className="mb-8 flex items-center justify-between">
         <div>
@@ -205,5 +210,6 @@ export default function AdminPrograms() {
         </div>
       )}
     </div>
+    </>
   );
 }

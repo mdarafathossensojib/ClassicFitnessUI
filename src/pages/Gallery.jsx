@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import apiClient from "../services/api_client"
 import Loading from "../components/Alert/Loading"
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 export default function Gallery() {
   const [gallery, setGallery] = useState([])
@@ -34,6 +35,10 @@ export default function Gallery() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Gallery</title>
+    </Helmet>
     <div className="p-8 bg-zinc-950 min-h-screen">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
     <h1 className="text-3xl font-bold text-white mb-6">Gallery</h1>
@@ -56,6 +61,6 @@ export default function Gallery() {
         </div>
     )}
     </div>
-
+    </>
   )
 }

@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react"
 import { useForm } from "react-hook-form";
 import useAuthContext from "../hooks/useAuthContext";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 
 const  Signup = () => {
@@ -36,6 +37,10 @@ const  Signup = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Register</title>
+    </Helmet>
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 py-12">
       <div className="w-full max-w-md">
         <div className="my-8 text-center">
@@ -252,6 +257,7 @@ const  Signup = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

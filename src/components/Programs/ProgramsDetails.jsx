@@ -9,6 +9,7 @@ import ProgramContent from "./ProgramContent";
 import ProgramFeedback from "./ProgramFeedback";
 import ProgramBooking from "../Dashboard/Classes/ProgramBooking";
 import ErrorAlert from "../Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 const ProgramsDetails = () => {
   const { programId } = useParams();
@@ -51,6 +52,10 @@ const ProgramsDetails = () => {
     : "/placeholder.svg";
 
   return (
+    <>
+    <Helmet>
+      <title>Program Details</title>
+    </Helmet>
     <main className="bg-zinc-950 pt-20">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
       {/* Hero */}
@@ -95,6 +100,7 @@ const ProgramsDetails = () => {
         </div>
       </section>
     </main>
+    </>
   );
 };
 

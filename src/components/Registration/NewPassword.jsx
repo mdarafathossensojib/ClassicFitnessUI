@@ -4,6 +4,7 @@ import ErrorAlert from "../Alert/ErrorAlert";
 import SuccessAlert from "../Alert/SuccessAlert";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { Helmet } from "react-helmet";
 
 const NewPassword = () => {
   const { uid, token } = useParams();
@@ -51,6 +52,10 @@ const NewPassword = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Set New Password</title>
+    </Helmet>
     <div className="min-h-screen flex items-center justify-center bg-zinc-950 px-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -102,6 +107,7 @@ const NewPassword = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

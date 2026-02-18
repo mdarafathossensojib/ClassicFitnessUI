@@ -5,6 +5,7 @@ import authApiClient from "../services/auth_api_client"
 import FeedbackCard from "../components/home/FeedbackCard"
 import ErrorAlert from "../components/Alert/ErrorAlert"
 import SuccessAlert from "../components/Alert/SuccessAlert"
+import { Helmet } from "react-helmet"
 
 export default function Feedback() {
   const { user } = useAuthContext()
@@ -52,6 +53,10 @@ export default function Feedback() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Feedback</title>
+    </Helmet>
     <div className="p-6 bg-zinc-950 min-h-screen">
       <h1 className="text-3xl font-bold text-white mb-6">All Feedbacks</h1>
       {errorMsg && <ErrorAlert message={errorMsg} /> }
@@ -107,5 +112,6 @@ export default function Feedback() {
         ))}
       </div>
     </div>
+    </>
   )
 }

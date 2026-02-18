@@ -4,6 +4,7 @@ import authApiClient from "../../../services/auth_api_client";
 import Loading from "../../Alert/Loading";
 import ErrorAlert from "../../Alert/ErrorAlert";
 import SuccessAlert from "../../Alert/SuccessAlert";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -46,6 +47,10 @@ const MyBookings = () => {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>My Booked Class</title>
+    </Helmet>
     <div className="p-8 bg-zinc-950 min-h-screen">
       <h1 className="text-3xl font-bold text-white mb-8">My Bookings</h1>
       {errorMsg && <ErrorAlert message={errorMsg} /> }
@@ -87,6 +92,7 @@ const MyBookings = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

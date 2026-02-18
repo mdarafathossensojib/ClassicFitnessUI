@@ -7,6 +7,7 @@ import PageNotFound from "../Alert/PageNotFound";
 import apiClient from "../../services/api_client";
 import Loading from "../Alert/Loading";
 import ErrorAlert from "../Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 
 const PurchaseDetails = () => {
@@ -51,6 +52,9 @@ const PurchaseDetails = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Membership Details</title>
+    </Helmet>
       <main className="bg-zinc-950 pt-20">
         {errorMsg && <ErrorAlert message={errorMsg} /> }
         <section className="py-16">

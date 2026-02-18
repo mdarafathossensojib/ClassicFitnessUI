@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api_client";
 import Loading from "../components/Alert/Loading";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 
 
@@ -33,6 +34,9 @@ const Trainers = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Trainers</title>
+    </Helmet>
       <main>
         <PageHeader
           label="Our Team"

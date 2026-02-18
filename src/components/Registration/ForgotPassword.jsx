@@ -3,6 +3,7 @@ import {Link} from "react-router";
 import { ArrowLeft, Mail } from "lucide-react"
 import useAuthContext from "../../hooks/useAuthContext";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("")
@@ -24,6 +25,10 @@ const ForgotPassword = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Forgot Password</title>
+    </Helmet>
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 py-12">
       <div className="w-full max-w-md">
 
@@ -108,6 +113,7 @@ const ForgotPassword = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

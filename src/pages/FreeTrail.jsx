@@ -3,6 +3,7 @@ import {Link} from "react-router"
 import { Dumbbell, Check, ArrowRight } from "lucide-react"
 import authApiClient from "../services/auth_api_client";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 const trialFeatures = [
   "Full gym access for 7 days",
@@ -46,6 +47,9 @@ const FreeTrial = () => {
   }
   return (
     <>
+    <Helmet>
+      <title>Free Trail</title>
+    </Helmet>
       <main className="bg-zinc-950 pt-20">
         <section className="py-16">
           <div className="mx-auto max-w-5xl px-6">

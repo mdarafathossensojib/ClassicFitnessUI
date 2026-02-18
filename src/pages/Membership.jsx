@@ -6,6 +6,7 @@ import apiClient from "../services/api_client";
 import Loading from "../components/Alert/Loading";
 import MembershipFAQ from "../components/Membership/MembershipFAQ";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 
 const Membership = () => {
@@ -31,6 +32,9 @@ const Membership = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Memberships</title>
+    </Helmet>
       <main>
         <PageHeader
           label="Membership Plans"

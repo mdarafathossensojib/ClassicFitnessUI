@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api_client";
 import Loading from "../components/Alert/Loading";
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import { Helmet } from "react-helmet";
 
 
 const Programs = () => {
@@ -32,6 +33,9 @@ const Programs = () => {
   }, [])  
   return (
     <>
+    <Helmet>
+      <title>Programs</title>
+    </Helmet>
       <main>
         <PageHeader
           label="Our Programs"

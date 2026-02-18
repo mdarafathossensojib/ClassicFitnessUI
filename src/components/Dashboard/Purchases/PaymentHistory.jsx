@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Receipt, Download } from "lucide-react"
 import Loading from "../../Alert/Loading"
 import authApiClient from "../../../services/auth_api_client"
+import { Helmet } from "react-helmet"
 
 export default function PaymentHistory() {
   const [purchases, setPurchases] = useState([])
@@ -68,6 +69,10 @@ export default function PaymentHistory() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Purchases History</title>
+    </Helmet>
     <div className="p-8 bg-zinc-950 min-h-screen">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white flex items-center gap-2">
@@ -181,5 +186,6 @@ export default function PaymentHistory() {
         )}
       </div>
     </div>
+    </>
   )
 }

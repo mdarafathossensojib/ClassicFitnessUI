@@ -6,6 +6,7 @@ import authApiClient from "../../../services/auth_api_client"
 import Loading from "../../Alert/Loading"
 import ErrorAlert from "../../Alert/ErrorAlert"
 import SuccessAlert from "../../Alert/SuccessAlert"
+import { Helmet } from "react-helmet"
 
 export default function AdminGallery() {
   const [showModal, setShowModal] = useState(false)
@@ -63,6 +64,10 @@ export default function AdminGallery() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Admin Gallery</title>
+    </Helmet>
     <div className="p-8">
       <div className="mb-8 flex items-center justify-between">
         <div>
@@ -122,5 +127,6 @@ export default function AdminGallery() {
         </div>
       )}
     </div>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import useAuthContext from "../hooks/useAuthContext"
 import AdminDashboard from "../components/Admin/AdminDashboard"
 import Loading from "../components/Alert/Loading"
 import ErrorAlert from "../components/Alert/ErrorAlert"
+import { Helmet } from "react-helmet"
 
 export default function Dashboard() {
   const { user } = useAuthContext()
@@ -51,6 +52,10 @@ export default function Dashboard() {
   ]
 
   return (
+    <>
+    <Helmet>
+      <title>Dashboard</title>
+    </Helmet>
     <div className="p-8">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
       <div className="mb-8">
@@ -112,5 +117,6 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+    </>
   )
 }
