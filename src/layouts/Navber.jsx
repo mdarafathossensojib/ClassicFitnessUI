@@ -175,12 +175,12 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="flex gap-3 border-t border-zinc-800 px-6 py-4">
-              <Link to="/login" className="flex-1 text-center text-white bg-red-600 border px-4 py-2">
+              <Link to="/login" className="flex-1 text-center text-white bg-red-600 rounded-sm px-4 py-2">
                 Log In
               </Link>
               <Link
                 to="/register"
-                className="flex-1 text-center text-white bg-red-600 px-4 py-2"
+                className="flex-1 text-center text-white bg-red-600 rounded-sm px-4 py-2"
               >
                 Join Now
               </Link>
