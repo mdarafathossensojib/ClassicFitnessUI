@@ -4,15 +4,15 @@ import { Dumbbell, Instagram, Facebook, Twitter, Youtube } from "lucide-react"
 const footerLinks = {
   company: [
     { label: "About Us", href: "#" },
-    { label: "Our Team", href: "#" },
+    { label: "Our Team", href: "/trainers" },
     { label: "Careers", href: "#" },
     { label: "Blog", href: "#" },
   ],
   programs: [
-    { label: "Strength Training", href: "#" },
-    { label: "Group Classes", href: "#" },
-    { label: "Personal Training", href: "#" },
-    { label: "Nutrition Plans", href: "#" },
+    { label: "Strength Training", href: "/programs/1" },
+    { label: "Group Classes", href: "/programs/2" },
+    { label: "Personal Training", href: "/programs/3" },
+    { label: "Martial Arts", href: "/programs/5" },
   ],
   support: [
     { label: "Help Center", href: "#" },
@@ -36,7 +36,7 @@ const Footer = () => {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <Dumbbell className="h-7 w-7 text-red-600" />
               <span className="text-xl font-bold uppercase tracking-wider text-white">
                 Classic Fitness
@@ -74,7 +74,7 @@ const Footer = () => {
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-zinc-400 transition-colors hover:text-red-500"
                   >
                     {link.label}
@@ -92,7 +92,7 @@ const Footer = () => {
               {footerLinks.programs.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-zinc-400 transition-colors hover:text-red-500"
                   >
                     {link.label}
@@ -110,7 +110,7 @@ const Footer = () => {
               {footerLinks.support.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-zinc-400 transition-colors hover:text-red-500"
                   >
                     {link.label}

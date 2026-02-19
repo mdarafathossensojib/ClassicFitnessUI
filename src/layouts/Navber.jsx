@@ -141,7 +141,7 @@ export default function Navbar() {
           className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X /> : <Menu />}
+          {mobileOpen ? <X className="text-white" /> : <Menu className="text-white" />}
         </button>
       </nav>
 
@@ -154,7 +154,7 @@ export default function Navbar() {
                 key={link.label}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-2 text-sm uppercase text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                className="rounded-md px-3 py-2 text-sm uppercase text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100"
               >
                 {link.label}
               </Link>
@@ -163,24 +163,24 @@ export default function Navbar() {
 
           {user ? (
             <div className="border-t border-zinc-800 px-6 py-4 space-y-2">
-              <Link to="/dashboard" className="block text-sm">
+              <Link to="/dashboard" className="block text-sm text-white">
                 Dashboard
               </Link>
-              <Link to="/dashboard/profile" className="block text-sm">
+              <Link to="/dashboard/profile" className="block text-sm text-white">
                 Profile
               </Link>
-              <button onClick={handleLogout} className="block text-sm text-red-500">
+              <button onClick={handleLogout} className="block text-sm text-white">
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex gap-3 border-t border-zinc-800 px-6 py-4">
-              <Link to="/login" className="flex-1 text-center border px-4 py-2">
+              <Link to="/login" className="flex-1 text-center text-white bg-red-600 border px-4 py-2">
                 Log In
               </Link>
               <Link
                 to="/register"
-                className="flex-1 text-center bg-red-600 px-4 py-2"
+                className="flex-1 text-center text-white bg-red-600 px-4 py-2"
               >
                 Join Now
               </Link>

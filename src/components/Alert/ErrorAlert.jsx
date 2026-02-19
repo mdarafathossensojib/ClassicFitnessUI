@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { AlertTriangle, X } from "lucide-react"
 
-const ErrorAlert = ({ message, onClose, duration = 10000 }) => {
+const ErrorAlert = ({ message, onClose, duration = 6000 }) => {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {

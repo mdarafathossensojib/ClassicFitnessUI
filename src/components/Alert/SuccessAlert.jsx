@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
 
-export default function SuccessAlert({ message, onClose, duration = 5000 }) {
+export default function SuccessAlert({ message, onClose, duration = 6000 }) {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
