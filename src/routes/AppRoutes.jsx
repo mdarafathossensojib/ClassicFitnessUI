@@ -35,6 +35,7 @@ import AdminAttendance from "../components/Admin/Attendence/AdminAttendence";
 import MyAttendance from "../components/Dashboard/Attendence/MyAttendence";
 import NewPassword from "../components/Registration/NewPassword";
 import AdminContact from "../components/Admin/Contact/AdminContact";
+import AdminFreeTrial from "../components/Admin/FreeTrail/AdminFreeTrial";
 
 
 const AppRoutes = () => {
@@ -89,6 +90,7 @@ const AppRoutes = () => {
                 <Route path="admin/services" element={<AdminService />} />
                 <Route path="admin/feedback" element={<AdminFeedback />} />
                 <Route path="admin/contact" element={<AdminContact />} />
+                <Route path="admin/free-trial" element={<AdminFreeTrial />} />
             </Route>
         </Routes>
     );

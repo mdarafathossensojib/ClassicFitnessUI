@@ -45,7 +45,6 @@ export default function AdminContact() {
     }
   };
 
-  // Eye click
   const handleView = async (contact) => {
     setErrorMsg("");
     setSuccMsg("");
@@ -54,16 +53,13 @@ export default function AdminContact() {
       let updatedContact = contact;
 
       if (!contact.is_read) {
-        const res = await authApiClient.patch(
-          `/contact/${contact.id}/`,
-          { is_read: true }
+        const res = await authApiClient.post(
+          `/contact/${contact.id}/mark_read/`
         );
         updatedContact = res.data;
 
         setContacts((prev) =>
-          prev.map((c) =>
-            c.id === contact.id ? res.data : c
-          )
+          prev.map((c) => (c.id === contact.id ? updatedContact : c))
         );
       }
 
@@ -73,6 +69,7 @@ export default function AdminContact() {
       setErrorMsg("Failed to update status");
     }
   };
+
 
   const handleEdit = (contact) => {
     setModalMode("edit");
