@@ -12,8 +12,10 @@ const ActivationNotice = () => {
   const email = location.state?.email;
 
   const [successMsg, setSuccessMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleResend = async () => {
+    setLoading(true);
     try {
       const response = await resendActivationEmail(email);
       if (response.success) {
@@ -21,6 +23,8 @@ const ActivationNotice = () => {
       }
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -55,7 +59,7 @@ const ActivationNotice = () => {
           onClick={handleResend}
           className="mt-6 w-full rounded-md bg-red-600 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
         >
-          Resend Activation Email
+          {loading ? "Resending" : "Resend Activation Email"}
         </button>
       </div>
     </div>
