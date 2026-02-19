@@ -30,6 +30,9 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
     }
   };
 
+  const inputStyle = "w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600"
+
+
   return (
     <div className="lg:col-span-3">
       <form
@@ -52,7 +55,7 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
                 {...register("name", { required: "Name is required" })}
                 type="text"
                 placeholder="John Doe"
-                className="input-style"
+                className={inputStyle}
               />
               {errors.name && (
                 <p className="text-red-500 text-xs mt-1">
@@ -75,7 +78,7 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
                 })}
                 type="email"
                 placeholder="you@example.com"
-                className="input-style"
+                className={inputStyle}
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">
@@ -95,7 +98,7 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
                 {...register("phone")}
                 type="tel"
                 placeholder="+880 123456789"
-                className="input-style"
+                className={inputStyle}
               />
             </div>
 
@@ -105,7 +108,7 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
               </label>
               <select
                 {...register("subject", { required: "Subject is required" })}
-                className="input-style"
+                className={inputStyle}
               >
                 <option value="">Select a subject</option>
                 <option value="membership">Membership Inquiry</option>
@@ -137,7 +140,7 @@ const ContactForm = ({ setSuccessMsg, setErrorMsg }) => {
               })}
               rows={5}
               placeholder="Tell us how we can help..."
-              className="input-style resize-none"
+              className={inputStyle}
             />
             {errors.message && (
               <p className="text-red-500 text-xs mt-1">
