@@ -5,6 +5,7 @@ import Loading from "../../Alert/Loading";
 import ErrorAlert from "../../Alert/ErrorAlert";
 import SuccessAlert from "../../Alert/SuccessAlert";
 import AdminFreeTrialModal from "./AdminFreeTrialModal";
+import { Helmet } from "react-helmet";
 
 export default function AdminFreeTrial() {
   const [trials, setTrials] = useState([]);
@@ -22,7 +23,7 @@ export default function AdminFreeTrial() {
       const res = await authApiClient.get("/free-trial/");
       setTrials(res.data);
     } catch (err) {
-      setErrorMsg("Failed to fetch trials");
+      setErrorMsg("Failed to fetch trials" + err.response?.data);
     } finally {
       setLoading(false);
     }
@@ -45,6 +46,10 @@ export default function AdminFreeTrial() {
   if (loading) return <Loading />;
 
   return (
+    <>
+    <Helmet>
+      <title>Admin Free Trial</title>
+    </Helmet>
     <div className="p-8 text-white">
       <h1 className="text-3xl font-bold mb-8">Free Trial Requests</h1>
 
@@ -64,7 +69,7 @@ export default function AdminFreeTrial() {
           <tbody>
             {trials.map((trial) => (
               <tr key={trial.id} className="border-t border-zinc-800 hover:bg-zinc-800/50 transition">
-                <td className="p-4">{trial.name}</td>
+                <td className="p-4">{trial.full_name}</td>
                 <td>{trial.email}</td>
                 <td>{new Date(trial.created_at).toLocaleString()}</td>
                 <td className="flex gap-3 py-4">
@@ -97,5 +102,6 @@ export default function AdminFreeTrial() {
         />
       )}
     </div>
+    </>
   );
 }

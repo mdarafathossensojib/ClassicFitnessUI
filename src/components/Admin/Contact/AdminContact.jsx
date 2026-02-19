@@ -5,6 +5,7 @@ import authApiClient from "../../../services/auth_api_client";
 import Loading from "../../Alert/Loading";
 import ErrorAlert from "../../Alert/ErrorAlert";
 import SuccessAlert from "../../Alert/SuccessAlert";
+import { Helmet } from "react-helmet";
 
 export default function AdminContact() {
   const [contacts, setContacts] = useState([]);
@@ -79,6 +80,10 @@ export default function AdminContact() {
   if (loading) return <Loading />;
 
   return (
+    <>
+    <Helmet>
+      <title>Admin Contact</title>
+    </Helmet>
     <div className="p-8 text-white">
       <h1 className="text-3xl font-bold mb-8">Contact Messages</h1>
 
@@ -156,5 +161,6 @@ export default function AdminContact() {
         />
       )}
     </div>
+    </>
   );
 }

@@ -1,48 +1,49 @@
-import { Link, useLocation, useNavigate } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router";
 import {
   LayoutDashboard,
   User,
   Dumbbell,
   Layers,
+  Layers2,
   CreditCard,
   LogOut,
   X,
   ShoppingBag,
-  Images,
+  Image,
   Toolbox,
   MessagesSquare,
   User2,
-  School,
-  School2,
-  Layers2,
+  BookOpen,
+  CalendarCheck,
   Home,
-  Contact,
-  Icon
-} from "lucide-react"
-import useAuthContext from "../../hooks/useAuthContext"
-
+  FileText,
+  Mail
+} from "lucide-react";
+import useAuthContext from "../../hooks/useAuthContext";
 
 export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
   const location = useLocation();
   const pathname = location.pathname;
-  const {user, logoutUser} = useAuthContext();
-  const nagigate = useNavigate();
+  const { user, logoutUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleLogoutUser = () => {
-    nagigate("/login");
+    navigate("/login");
     logoutUser();
-  }
+  };
 
+  // ---------------- User Links ----------------
   const userLinks = [
     { label: "Home", to: "/", icon: Home },
     { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
     { label: "Profile", to: "/dashboard/profile", icon: User },
-    { label: "My Classes", to: "/dashboard/my-booking", icon: School },
-    { label: "My Attendence", to: "/dashboard/my-attendance", icon: School2 },
+    { label: "My Classes", to: "/dashboard/my-booking", icon: BookOpen },
+    { label: "My Attendance", to: "/dashboard/my-attendance", icon: CalendarCheck },
     { label: "My Plans", to: "/dashboard/my-plan", icon: Dumbbell },
     { label: "Purchase History", to: "/dashboard/payment/history", icon: ShoppingBag },
   ];
 
+  // ---------------- Admin Links ----------------
   const adminLinks = [
     { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
     { label: "Profile", to: "/dashboard/profile", icon: User },
@@ -50,14 +51,14 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
     { label: "Attendance", to: "/dashboard/admin/attendance", icon: Layers2 },
     { label: "Trainers", to: "/dashboard/admin/trainers", icon: User2 },
     { label: "Memberships", to: "/dashboard/admin/memberships", icon: CreditCard },
-    { label: "Free Trial", to: "/dashboard/admin/free-trial", icon: Icon },
-    { label: "Contact", to: "/dashboard/admin/contact", icon: Contact },
-    { label: "Gallery", to: "/dashboard/admin/gallery", icon: Images },
+    { label: "Free Trial", to: "/dashboard/admin/free-trial", icon: FileText },
+    { label: "Contact", to: "/dashboard/admin/contact", icon: Mail },
+    { label: "Gallery", to: "/dashboard/admin/gallery", icon: Image },
     { label: "Services", to: "/dashboard/admin/services", icon: Toolbox },
-    { label: "FeedBack", to: "/dashboard/admin/feedback", icon: MessagesSquare },
+    { label: "Feedback", to: "/dashboard/admin/feedback", icon: MessagesSquare },
   ];
 
-  const menuItems = user.is_staff ? adminLinks : userLinks;
+  const menuItems = user?.is_staff ? adminLinks : userLinks;
 
   return (
     <>
@@ -78,11 +79,11 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
         <div className="flex items-center justify-between border-b border-zinc-800 px-6 py-5">
           <Link to="/" className="flex items-center gap-2">
             <Dumbbell className="h-6 w-6 text-red-600" />
-            <span className="text-lg font-bold tracking-wide">
+            <span className="text-lg font-bold tracking-wide text-white">
               Classic Fitness
             </span>
           </Link>
-          <button onClick={closeSidebar} className="lg:hidden">
+          <button onClick={closeSidebar} className="lg:hidden text-white">
             <X />
           </button>
         </div>
@@ -90,8 +91,8 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
         {/* Menu */}
         <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
           {menuItems.map((item) => {
-            const Icon = item.icon
-            const active = pathname === item.to
+            const Icon = item.icon;
+            const active = pathname === item.to;
 
             return (
               <Link
@@ -104,10 +105,10 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
                     : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
                 }`}
               >
-                <Icon className="h-5 w-5" />
+                {Icon && <Icon className="h-5 w-5" />}
                 {item.label}
               </Link>
-            )
+            );
           })}
         </nav>
 
@@ -123,5 +124,5 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
         </div>
       </aside>
     </>
-  )
+  );
 }

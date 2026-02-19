@@ -2,12 +2,17 @@ import { useState } from "react"
 import { Outlet } from "react-router"
 import Sidebar from "./Sidebar"
 import DashboardNavbar from "../Dashboard/DashboardNavbar"
+import { Helmet } from "react-helmet";
 
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
   return (
+    <>
+    <Helmet>
+      <title>Dashboard</title>
+    </Helmet>
     <div className="flex min-h-screen bg-zinc-950 text-zinc-100">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen}
@@ -24,5 +29,6 @@ export default function DashboardLayout() {
         </main>
       </div>
     </div>
+    </>
   )
 }
