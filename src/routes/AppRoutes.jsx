@@ -34,6 +34,7 @@ import MyBookings from "../components/Dashboard/Classes/MyBookings";
 import AdminAttendance from "../components/Admin/Attendence/AdminAttendence";
 import MyAttendance from "../components/Dashboard/Attendence/MyAttendence";
 import NewPassword from "../components/Registration/NewPassword";
+import AdminContact from "../components/Admin/Contact/AdminContact";
 
 
 const AppRoutes = () => {
@@ -87,6 +88,7 @@ const AppRoutes = () => {
                 <Route path="admin/gallery" element={<AdminGallery />} />
                 <Route path="admin/services" element={<AdminService />} />
                 <Route path="admin/feedback" element={<AdminFeedback />} />
+                <Route path="admin/contact" element={<AdminContact />} />
             </Route>
         </Routes>
     );

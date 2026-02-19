@@ -15,7 +15,8 @@ import {
   School,
   School2,
   Layers2,
-  Home
+  Home,
+  Contact
 } from "lucide-react"
 import useAuthContext from "../../hooks/useAuthContext"
 
@@ -48,6 +49,7 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
     { label: "Attendance", to: "/dashboard/admin/attendance", icon: Layers2 },
     { label: "Trainers", to: "/dashboard/admin/trainers", icon: User2 },
     { label: "Memberships", to: "/dashboard/admin/memberships", icon: CreditCard },
+    { label: "Memberships", to: "/dashboard/admin/contact", icon: Contact },
     { label: "Gallery", to: "/dashboard/admin/gallery", icon: Images },
     { label: "Services", to: "/dashboard/admin/services", icon: Toolbox },
     { label: "FeedBack", to: "/dashboard/admin/feedback", icon: MessagesSquare },
