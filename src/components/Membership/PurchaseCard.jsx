@@ -19,7 +19,11 @@ const PurchaseCard = ({ plan, billing, displayPrice }) => {
             window.location.href = response.data.payment_url
             };
         } catch (error) {
-            setErrorMsg(error.response?.data);
+            if (error.response?.status === 401) {
+                setErrorMsg("You are not logged in. Please login first.");
+            } else {
+                setErrorMsg("Payment failed. Please try again.");
+        }
         }finally{
             setLoading(false);
         }
