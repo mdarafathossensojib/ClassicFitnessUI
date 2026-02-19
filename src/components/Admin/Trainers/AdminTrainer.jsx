@@ -122,13 +122,16 @@ export default function AdminTrainer() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-2xl bg-zinc-900 p-8 rounded-lg my-10">
-            <AddTrainer
-              editingTrainer={editingTrainer}
-              setShowModal={setShowModal}
-              refreshData={fetchTrainers}
-            />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto">
+          <div className="w-full max-w-2xl bg-zinc-900 rounded-lg p-6 sm:p-8">
+            {/* Scrollable content */}
+            <div className="max-h-[90vh] overflow-y-auto">
+              <AddTrainer
+                editingTrainer={editingTrainer}
+                setShowModal={setShowModal}
+                refreshData={fetchTrainers}
+              />
+            </div>
           </div>
         </div>
       )}
