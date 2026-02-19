@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const ContactInfo = ({ contactInfo }) => {
     return (
@@ -23,14 +23,27 @@ const ContactInfo = ({ contactInfo }) => {
                 </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Google Map Section */}
             <div className="mt-6 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900">
-                <div className="flex h-64 items-center justify-center bg-zinc-800">
-                <div className="text-center">
-                    <MapPin className="mx-auto h-8 w-8 text-zinc-600" />
-                    <p className="mt-2 text-sm text-zinc-500">123 Fitness Blvd, New York</p>
-                    <p className="text-xs text-zinc-600">Map integration area</p>
-                </div>
+                <div className="relative">
+                {/* Map */}
+                <iframe
+                    title="Dhaka Location"
+                    src="https://www.google.com/maps?q=Dhaka,Bangladesh&output=embed"
+                    className="h-64 w-full"
+                    loading="lazy"
+                ></iframe>
+
+                {/* Overlay Button */}
+                <a
+                    href="https://www.google.com/maps/place/Dhaka"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-4 right-4 flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-lg transition hover:bg-red-700"
+                >
+                    <ExternalLink className="h-4 w-4" />
+                    Open in Google Maps
+                </a>
                 </div>
             </div>
         </div>
