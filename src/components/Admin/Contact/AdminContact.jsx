@@ -9,6 +9,7 @@ import SuccessAlert from "../../Alert/SuccessAlert";
 export default function AdminContact() {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [modalMode, setModalMode] = useState("view");
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const [succMsg, setSuccMsg] = useState("");
@@ -31,36 +32,51 @@ export default function AdminContact() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this message?"))
       return;
+
     setErrorMsg("");
     setSuccMsg("");
 
     try {
       await authApiClient.delete(`/contact/${id}/`);
-      setSuccMsg("Contact Messege Deleted Successfully!");
-      setContacts(contacts.filter((c) => c.id !== id));
+      setContacts((prev) => prev.filter((c) => c.id !== id));
+      setSuccMsg("Contact Message Deleted Successfully!");
     } catch {
       setErrorMsg("Delete Failed!");
     }
   };
 
-  const toggleRead = async (contact) => {
+  // Eye click
+  const handleView = async (contact) => {
     setErrorMsg("");
     setSuccMsg("");
+
     try {
-      const res = await authApiClient.patch(`/contact/${contact.id}/`, {
-        is_read: !contact.is_read,
-      });
+      let updatedContact = contact;
 
-      setSuccMsg("Contact Messege Updated!");
+      if (!contact.is_read) {
+        const res = await authApiClient.patch(
+          `/contact/${contact.id}/`,
+          { is_read: true }
+        );
+        updatedContact = res.data;
 
-      setContacts(
-        contacts.map((c) =>
-          c.id === contact.id ? res.data : c
-        )
-      );
+        setContacts((prev) =>
+          prev.map((c) =>
+            c.id === contact.id ? res.data : c
+          )
+        );
+      }
+
+      setModalMode("view");
+      setSelectedContact(updatedContact);
     } catch {
-      setErrorMsg("Updated Failed!");
+      setErrorMsg("Failed to update status");
     }
+  };
+
+  const handleEdit = (contact) => {
+    setModalMode("edit");
+    setSelectedContact(contact);
   };
 
   if (loading) return <Loading />;
@@ -89,10 +105,7 @@ export default function AdminContact() {
                 key={contact.id}
                 className="border-t border-zinc-800 hover:bg-zinc-800/50 transition"
               >
-                <td
-                  onClick={() => setSelectedContact(contact)}
-                  className="p-4 cursor-pointer font-semibold hover:text-red-500"
-                >
+                <td className="p-4 font-semibold">
                   {contact.name}
                 </td>
 
@@ -111,20 +124,23 @@ export default function AdminContact() {
                 </td>
 
                 <td className="flex gap-3 py-4">
+                  {/* View */}
                   <button
-                    onClick={() => toggleRead(contact)}
+                    onClick={() => handleView(contact)}
                     className="text-blue-400 hover:text-blue-600"
                   >
                     <Eye size={18} />
                   </button>
 
+                  {/* Edit */}
                   <button
-                    onClick={() => setSelectedContact(contact)}
+                    onClick={() => handleEdit(contact)}
                     className="text-green-400 hover:text-green-600"
                   >
                     <Pencil size={18} />
                   </button>
 
+                  {/* 🗑 Delete */}
                   <button
                     onClick={() => handleDelete(contact.id)}
                     className="text-red-400 hover:text-red-600"
@@ -139,10 +155,7 @@ export default function AdminContact() {
       </div>
 
       {selectedContact && (
-        <AdminContactModal
-          contact={selectedContact}
-          onClose={() => setSelectedContact(null)}
-          refresh={fetchContacts}
+        <AdminContactModal contact={selectedContact} mode={modalMode} onClose={() => setSelectedContact(null)} refresh={fetchContacts} setErrorMsg={setErrorMsg} setSuccMsg={setSuccMsg}
         />
       )}
     </div>
