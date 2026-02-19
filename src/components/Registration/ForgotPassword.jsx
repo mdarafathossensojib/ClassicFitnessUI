@@ -4,11 +4,14 @@ import { ArrowLeft, Mail } from "lucide-react"
 import useAuthContext from "../../hooks/useAuthContext";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import ErrorAlert from "../Alert/ErrorAlert";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false);
   const {ForgotPassword} = useAuthContext();
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const { register,
       handleSubmit,
@@ -16,11 +19,14 @@ const ForgotPassword = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
+      setLoading(true);
     try {
       const res = await ForgotPassword(data);
       if(res.success) setSubmitted(true);
     } catch (error) {
-      console.log("Registration failed", error);
+      setErrorMsg(error.response?.data);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -31,6 +37,7 @@ const ForgotPassword = () => {
     </Helmet>
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 py-12">
       <div className="w-full max-w-md">
+        {errorMsg && <ErrorAlert message={errorMsg} /> }
 
         {!submitted ? (
           <>
@@ -66,11 +73,11 @@ const ForgotPassword = () => {
               )}
                 </div>
 
-                <button
+                <button disabled={loading}
                   type="submit"
                   className="w-full rounded-md bg-red-600 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
                 >
-                  Send Reset Link
+                  {loading ? "Sending" : "Send Reset Link"}
                 </button>
               </div>
             </form>
