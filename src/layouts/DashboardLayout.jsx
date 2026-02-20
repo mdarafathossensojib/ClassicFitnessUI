@@ -11,8 +11,9 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="drawer lg:drawer-open">
-      {/* Mobile drawer checkbox */}
+    <div className="drawer lg:drawer-open min-h-screen overflow-x-hidden bg-zinc-950">
+
+      {/* Mobile Drawer Toggle */}
       <input
         id="drawer-toggle"
         type="checkbox"
@@ -21,13 +22,14 @@ const DashboardLayout = () => {
         onChange={toggleSidebar}
       />
 
-      {/* Page content */}
-      <div className="drawer-content flex flex-col">
-        {/* Navbar */}
-        <Navbar sidebarOpen={sidebarOpen} />
+      {/* Page Content */}
+      <div className="drawer-content flex flex-col w-full max-w-full overflow-x-hidden">
 
-        {/* Main content */}
-        <main className="p-6">
+        {/* Navbar */}
+        <Navbar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+
+        {/* Main Content */}
+        <main className="flex-1 w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Outlet />
         </main>
       </div>

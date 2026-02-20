@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Star, X } from "lucide-react"
+import { MoreVertical, Star, X } from "lucide-react"
 import authApiClient from "../../services/auth_api_client"
 import ErrorAlert from "../Alert/ErrorAlert"
 import SuccessAlert from "../Alert/SuccessAlert"
@@ -13,7 +13,6 @@ export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }
   // Member might just be an ID number from backend
   const isOwner = currentUser?.id === feedback?.member
 
-  // State for edit modal
   const [isEditing, setIsEditing] = useState(false)
   const [newComment, setNewComment] = useState(feedback?.comment || "")
   const [newRating, setNewRating] = useState(feedback?.rating || 0)
@@ -21,6 +20,7 @@ export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [succMsg, setSuccMsg] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleDelete = async () => {
     if (!confirm("Are you sure you want to delete your feedback?")) return;
@@ -74,24 +74,43 @@ export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }
 
       {/* Content */}
       <div className="flex-1">
-        <div className="flex items-center justify-between mb-1">
-          <h4 className="text-sm font-bold text-white">{memberName}</h4>
+        <div className="flex items-center justify-between mb-1 relative">
+        <h4 className="text-sm font-bold text-white">{memberName}</h4>
 
-          {/* Edit/Delete for owner */}
-          {isOwner && (
-            <div className="flex gap-2">
-              <button
-                onClick={() => setIsEditing(true)}
-                className="text-xs text-blue-400 hover:text-blue-500"
-              >
-                Edit
-              </button>
-              <button
-                onClick={handleDelete}
-                className="text-xs text-red-400 hover:text-red-500"
-              >
-                {loading ? "Deleting" : "Delete"}
-              </button>
+        {isOwner && (
+          <div className="relative">
+            {/* 3 Dot Button */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="text-gray-400 hover:text-white"
+            >
+              <MoreVertical size={18} />
+            </button>
+
+            {/* Dropdown */}
+            {open && (
+              <div className="absolute right-0 w-24 bg-gray-800 rounded-md shadow-lg py-1 z-50">
+                <button
+                    onClick={() => {
+                      setOpen(false);
+                      setIsEditing(true);
+                    }}
+                    className="block w-full text-left px-3 py-1 text-xs text-blue-400 hover:bg-gray-700"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      handleDelete();
+                    }}
+                    className="block w-full text-left px-3 py-1 text-xs text-red-400 hover:bg-gray-700"
+                  >
+                    {loading ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
