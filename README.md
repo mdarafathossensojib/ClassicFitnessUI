@@ -41,7 +41,7 @@ ClassicFitness allows users to manage memberships, track daily workouts, book fi
 ### 1. Backend Setup
 ```bash
 # Clone the repository
-git clone <repo_url>
+git clone https://github.com/mdarafathossensojib/ClassicFitness.git
 cd backend
 
 # Create and activate virtual environment
