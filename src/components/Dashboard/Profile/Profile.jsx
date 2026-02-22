@@ -62,8 +62,10 @@ export default function Profile() {
         formData.append("profile_image", fileInputRef.current.files[0]);
       }
 
-      await updateUserProfile(formData);
-      setSuccessMsg("Profile updated successfully!");
+      const result = await updateUserProfile(formData);
+      if(result?.success){
+          setSuccessMsg("Profile updated successfully!");
+      }
     } catch (err) {
       setErrorMsg(err.response?.data || "Failed to update profile");
     } finally {

@@ -53,11 +53,13 @@ const useAuth = () => {
     const updateUserProfile = async (data) => {
         setErrorMsg("");
         try {
-        await apiClient.put("/auth/users/me/", data, {
-            headers: {
-            Authorization: `JWT ${authTokens?.access}`,
-            },
-        });
+            await apiClient.put("/accounts/me/", data, {
+                headers: {
+                Authorization: `JWT ${authTokens?.access}`,
+                },
+            });
+            await fetchUserProfile();
+            return { success: true };
         } catch (error) {
             return handleAPIError(error);
         }

@@ -95,7 +95,7 @@ const Login = () => {
                 </button>
               </div>
               {errors.password && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {errors.password.message}
                 </span>
               )}

@@ -71,7 +71,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.first_name && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.first_name.message}
                 </span>
               )}
@@ -92,7 +92,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.last_name && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.last_name.message}
                 </span>
               )}
@@ -114,7 +114,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.email && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.email.message}
                 </span>
               )}
@@ -136,7 +136,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.phone_number && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.phone_number.message}
                 </span>
               )}
@@ -157,7 +157,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.address && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.address.message}
                 </span>
               )}
@@ -193,7 +193,7 @@ const  Signup = () => {
                 </button>
               </div>
               {registerErrors.password && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.password.message}
                 </span>
               )}
@@ -217,7 +217,7 @@ const  Signup = () => {
                 className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors focus:border-red-600 focus:ring-1 focus:ring-red-600"
               />
               {registerErrors.confirm_password && (
-                <span className="label-text-alt text-error">
+                <span className="label-text-alt text-error text-red-500">
                   {registerErrors.confirm_password.message}
                 </span>
               )}
