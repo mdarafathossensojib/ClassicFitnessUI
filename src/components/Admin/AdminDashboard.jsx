@@ -77,7 +77,7 @@ export default function AdminDashboard() {
   if(loading) return <Loading />
 
   return (
-    <div className="p-8 text-white">
+    <div className="p-4 sm:p-8 text-white w-fit mx-auto overflow-hidden ">
 
       {/* Header */}
       <div className="mb-10">
@@ -89,20 +89,16 @@ export default function AdminDashboard() {
       {errorMsg && <ErrorAlert message={errorMsg} /> }
 
       {/* Stats */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
         {stats.map((stat) => {
           const Icon = stat.icon
           return (
-            <div key={stat.label} className="bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
+            <div key={stat.label} className="bg-zinc-900 border border-zinc-800 p-5 rounded-xl min-w-0">
               <div className="flex justify-between items-center">
-                <span className="text-xs uppercase text-zinc-400">
-                  {stat.label}
-                </span>
+                <span className="text-xs uppercase text-zinc-400">{stat.label}</span>
                 <Icon className="w-5 h-5 text-red-500" />
               </div>
-              <p className="mt-4 text-3xl font-bold">
-                {stat.value}
-              </p>
+              <p className="mt-4 text-2xl sm:text-3xl font-bold">{stat.value}</p>
             </div>
           )
         })}
@@ -150,17 +146,17 @@ export default function AdminDashboard() {
           <table className="w-full text-sm">
             <thead className="text-zinc-400 border-b border-zinc-800">
               <tr>
-                <th className="px-6 py-3 text-left">Email</th>
-                <th className="px-6 py-3 text-left">Plan</th>
-                <th className="px-6 py-3 text-left">End Date</th>
+                <th className="px-6 py-3 text-left whitespace-nowrap">Email</th>
+                <th className="px-6 py-3 text-left whitespace-nowrap">Plan</th>
+                <th className="px-6 py-3 text-left whitespace-nowrap">End Date</th>
               </tr>
             </thead>
             <tbody>
               {expiringSoon.map((item, index) => (
                 <tr key={index} className="border-b border-zinc-800">
-                  <td className="px-6 py-4">{item.user__email}</td>
-                  <td className="px-6 py-4">{item.plan__name}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 whitespace-nowrap">{item.user__email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.plan__name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
                     {new Date(item.end_date).toLocaleDateString()}
                   </td>
                 </tr>
@@ -175,16 +171,16 @@ export default function AdminDashboard() {
         <h2 className="text-lg font-bold mb-4">Top Rated Classes</h2>
 
         <div className="space-y-3">
-          {feedbackReport.map((item, index) => (
-            <div key={index} className="flex justify-between text-sm">
-              <span>{item.fitness_class__title}</span>
-              <span className="text-yellow-400 font-semibold">
-                <Star /> {item.average_rating?.toFixed(1)} ({item.total_reviews})
-              </span>
-            </div>
-          ))}
+            {feedbackReport.map((item, index) => (
+              <div key={index} className="flex flex-col sm:flex-row justify-between text-sm gap-2">
+                <span className="truncate">{item.fitness_class__title}</span>
+                <span className="text-yellow-400 font-semibold flex items-center">
+                  <Star className="w-4 h-4 mr-1" /> {item.average_rating?.toFixed(1)} ({item.total_reviews})
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
     </div>
   )
