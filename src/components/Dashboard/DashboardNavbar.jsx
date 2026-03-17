@@ -21,7 +21,7 @@ export default function DashboardNavbar({ toggleSidebar }) {
   }, []);
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-zinc-800 bg-zinc-900 px-6">
+    <header className="flex h-16 w-full items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 sm:px-6 sticky top-0 z-10">
       <div className="flex items-center gap-3">
         <button onClick={toggleSidebar} className="lg:hidden">
           <Menu />
