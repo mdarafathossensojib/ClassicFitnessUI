@@ -13,7 +13,7 @@ export default function DashboardLayout() {
     <Helmet>
       <title>Dashboard</title>
     </Helmet>
-    <div className="flex min-h-screen bg-zinc-950 text-zinc-100 w-fit overflow-hidden mx-auto">
+    <div className="flex min-h-screen bg-zinc-950 text-zinc-100 w-full overflow-auto mx-auto">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen}
         closeSidebar={() => setSidebarOpen(false)} />

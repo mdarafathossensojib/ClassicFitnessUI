@@ -77,7 +77,7 @@ export default function AdminDashboard() {
   if(loading) return <Loading />
 
   return (
-    <div className="p-4 sm:p-8 text-white w-fit mx-auto overflow-hidden ">
+    <div className="p-4 sm:p-8 text-white w-full mx-auto overflow-hidden ">
 
       {/* Header */}
       <div className="mb-10">
