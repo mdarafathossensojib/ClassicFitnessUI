@@ -41,7 +41,7 @@ export default function Gallery() {
     </Helmet>
     <div className="p-8 bg-zinc-950 min-h-screen">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
-    <h1 className="text-3xl font-bold text-white mb-6">Gallery</h1>
+    <h1 className="text-3xl font-bold text-white mt-15 mb-6">Gallery</h1>
     {gallery.length === 0 ? (
         <p className="text-zinc-400">No gallery images found.</p>
     ) : (
