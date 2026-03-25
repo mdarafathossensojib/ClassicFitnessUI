@@ -50,7 +50,7 @@ export default function Services() {
     <section className="bg-zinc-950 py-12">
       {errorMsg && <ErrorAlert message={errorMsg} /> }
       <div className="container mx-auto px-6">
-        <h1 className="text-3xl font-bold text-white mb-8">All Gym Services</h1>
+        <h1 className="text-3xl font-bold text-white mt-15 mb-8">All Gym Services</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {services.map((service) => (
