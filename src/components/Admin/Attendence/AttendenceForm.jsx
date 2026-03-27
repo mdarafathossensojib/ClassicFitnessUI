@@ -19,7 +19,7 @@ export default function AttendanceForm() {
 
   const fetchClasses = async () => {
     const res = await authApiClient.get("/classes/");
-    setClasses(res.data);
+    setClasses(res.data.results);
   };
 
   const fetchUsers = async (classId) => {

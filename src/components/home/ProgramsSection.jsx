@@ -27,7 +27,7 @@ const ProgramsSection = () => {
     try {
       setLoading(true);
       const response = await apiClient.get("/classes");
-      setProgramsData(response.data);
+      setProgramsData(response.data.results);
     } catch (error) {
       setErrorMsg(error.response?.data);
     } finally {

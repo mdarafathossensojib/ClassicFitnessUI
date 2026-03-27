@@ -18,7 +18,7 @@ const Trainers = () => {
     try {
       setLoading(true);
       const response = await apiClient.get("/trainers");
-      setTrainers(response.data);
+      setTrainers(response.data.results);
     } catch (error) {
       setErrorMsg(error.response?.data);
     } finally {

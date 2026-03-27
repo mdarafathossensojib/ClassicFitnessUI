@@ -21,7 +21,7 @@ export default function AdminPrograms() {
     try {
       setLoading(true);
       const response = await apiClient.get("/classes/");
-      setProgramsData(response.data || []);
+      setProgramsData(response.data.results || []);
     } catch (error) {
       setErrorMsg(error.response?.data);
       setProgramsData([]);
@@ -187,7 +187,7 @@ export default function AdminPrograms() {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/80 backdrop-blur-sm">
-          <div className="max-h-[90vh] overflow-y-auto w-full max-w-lg rounded-lg border border-zinc-800 bg-zinc-900 p-8">
+          <div className="max-h-[90vh] overflow-y-auto no-scrollbar  w-full max-w-lg rounded-lg border border-zinc-800 bg-zinc-900 p-8">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-white">
                 {editingProgram ? "Edit Program" : "Add New Program"}
