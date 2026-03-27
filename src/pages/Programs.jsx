@@ -2,35 +2,21 @@ import {Link} from "react-router";
 import PageHeader from "../components/PageHeader";
 import { Dumbbell, Flame, Heart, Bike, Swords, Sparkles } from "lucide-react"
 
-import { useEffect, useState } from "react";
-import apiClient from "../services/api_client";
+import { useState } from "react";
 import Loading from "../components/Alert/Loading";
 import ErrorAlert from "../components/Alert/ErrorAlert";
 import { Helmet } from "react-helmet";
+import Pagination from "../components/Programs/Pagination";
+import useFetchProgram from "../hooks/useFetchClass";
 
 
 const Programs = () => {
-  const [programsData, setProgramsData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const icon = [Dumbbell, Flame, Heart, Heart, Bike, Swords, Sparkles]
 
-  const fetchProgramsData = async () => {
-    try {
-      setLoading(true);
-      const response = await apiClient.get("/classes");
-      setProgramsData(response.data);
-    } catch (error) {
-      setErrorMsg(error.response?.data);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchProgramsData();
-  }, [])  
+  const {programs, loading, totalPages, errorMsg} = useFetchProgram(currentPage, "", "")
+ 
   return (
     <>
     <Helmet>
@@ -50,7 +36,8 @@ const Programs = () => {
               <Loading />) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {errorMsg && <ErrorAlert message={errorMsg} /> }
-              {programsData.map((program, index) => {
+
+              {programs.map((program, index) => {
                 const IconComponent = icon[index % icon.length];
                 const imageUrl = `https://res.cloudinary.com/mdarafathossen/${program.image}`
                 return (
@@ -97,6 +84,7 @@ const Programs = () => {
               })}
             </div>
           )}
+            <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage} />
           </div>
         </section>
       </main>

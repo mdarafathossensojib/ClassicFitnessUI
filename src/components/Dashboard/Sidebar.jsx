@@ -69,9 +69,9 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
           className="fixed inset-0 z-30 bg-black/50 lg:hidden"
         />
       )}
-
+      <div className="drawer-side">
       <aside
-        className={`fixed z-40 flex h-full w-64 flex-col border-r border-zinc-800 bg-zinc-900 transition-transform lg:static lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-zinc-800 bg-zinc-900 transition-transform lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -123,6 +123,7 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
           </button>
         </div>
       </aside>
+      </div>
     </>
   );
 }

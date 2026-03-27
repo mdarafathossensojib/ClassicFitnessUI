@@ -20,7 +20,7 @@ export default function AdminTrainer() {
     try {
       setLoading(true)
       const res = await apiClient.get("/trainers/")
-      setTrainers(res.data || [])
+      setTrainers(res.data.results || [])
     } catch (err) {
       setErrorMsg(err.response?.data)
       setTrainers([])
