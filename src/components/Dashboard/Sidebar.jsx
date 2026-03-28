@@ -70,59 +70,59 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
         />
       )}
       <div className="drawer-side">
-      <aside
-        className={`fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-zinc-800 bg-zinc-900 transition-transform lg:static lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-800 px-6 py-5">
-          <Link to="/" className="flex items-center gap-2">
-            <Dumbbell className="h-6 w-6 text-red-600" />
-            <span className="text-lg font-bold tracking-wide text-white">
-              Classic Fitness
-            </span>
-          </Link>
-          <button onClick={closeSidebar} className="lg:hidden text-white">
-            <X />
-          </button>
-        </div>
+        <aside
+          className={`fixed top-0 left-0 z-40 flex h-full w-64 flex-col border-r border-zinc-800 bg-zinc-900 overflow-y-auto transition-transform lg:static lg:translate-x-0 ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-zinc-800 px-6 py-5">
+            <Link to="/" className="flex items-center gap-2">
+              <Dumbbell className="h-6 w-6 text-red-600" />
+              <span className="text-lg font-bold tracking-wide text-white">
+                Classic Fitness
+              </span>
+            </Link>
+            <button onClick={closeSidebar} className="lg:hidden text-white">
+              <X />
+            </button>
+          </div>
 
-        {/* Menu */}
-        <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            const active = pathname === item.to;
+          {/* Menu */}
+          <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              const active = pathname === item.to;
 
-            return (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={closeSidebar}
-                className={`flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition ${
-                  active
-                    ? "bg-red-600/10 text-red-500"
-                    : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
-                }`}
-              >
-                {Icon && <Icon className="h-5 w-5" />}
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={closeSidebar}
+                  className={`flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition ${
+                    active
+                      ? "bg-red-600/10 text-red-500"
+                      : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                  }`}
+                >
+                  {Icon && <Icon className="h-5 w-5" />}
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* Logout */}
-        <div className="border-t border-zinc-800 px-3 py-4">
-          <button
-            onClick={handleLogoutUser}
-            className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
-          >
-            <LogOut className="h-5 w-5" />
-            Logout
-          </button>
-        </div>
-      </aside>
+          {/* Logout */}
+          <div className="border-t border-zinc-800 px-3 py-4">
+            <button
+              onClick={handleLogoutUser}
+              className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+            >
+              <LogOut className="h-5 w-5" />
+              Logout
+            </button>
+          </div>
+        </aside>
       </div>
     </>
   );

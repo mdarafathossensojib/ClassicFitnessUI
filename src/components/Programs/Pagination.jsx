@@ -1,17 +1,25 @@
 const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
+  if (!totalPages || totalPages <= 1) return null;
+
   return (
-    <div className="flex justify-center my-6">
-      {Array.from({ length: totalPages }, (_, i) => (
-        <button
-          key={i}
-          onClick={() => handlePageChange(i + 1)}
-          className={`mt-5 mx-1 px-3 py-1 rounded hover:cursor-pointer ${
-            currentPage === i + 1 ? "btn bg-red-500 text-white" : "btn text-zinc-300"
-          }`}
-        >
-          {i + 1}
-        </button>
-      ))}
+    <div className="flex justify-center my-6 gap-2">
+      {Array.from({ length: totalPages }, (_, i) => {
+        const page = i + 1;
+
+        return (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page)}
+            className={`px-3 py-1 hover:cursor-pointer rounded transition ${
+              currentPage === page
+                ? "bg-red-500 text-white"
+                : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+            }`}
+          >
+            {page}
+          </button>
+        );
+      })}
     </div>
   );
 };
