@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
-import HeroImage from "../../assets/images/hero-gym.jpg"; // your imported image
+import HeroImage from "../../assets/images/hero-gym.jpg";
 import AnimatedText from "./AnimatedText";
 import { Link } from "react-router";
+import CountUp from "./CountUp";
 
 
 const HeroSection = () => {
@@ -52,14 +53,21 @@ const HeroSection = () => {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
           {[
-            { value: "500+", label: "Active Members" },
-            { value: "50+", label: "Expert Trainers" },
-            { value: "30+", label: "Programs" },
-            { value: "24/7", label: "Access" },
+            { value: 500, suffix: "+", label: "Active Members" },
+            { value: 50, suffix: "+", label: "Expert Trainers" },
+            { value: 30, suffix: "+", label: "Programs" },
+            { value: "24/7", suffix: "", label: "Access", isStatic: true },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-3xl font-bold text-red-500 md:text-4xl">
-                {stat.value}
+                {stat.isStatic ? (
+                  stat.value
+                ) : (
+                  <>
+                    <CountUp to={stat.value} />
+                    {stat.suffix}
+                  </>
+                )}
               </p>
               <p className="mt-1 text-sm uppercase tracking-wide text-zinc-500">
                 {stat.label}
