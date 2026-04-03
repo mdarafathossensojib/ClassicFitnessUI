@@ -5,10 +5,10 @@ import ErrorAlert from "../Alert/ErrorAlert"
 import SuccessAlert from "../Alert/SuccessAlert"
 
 export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }) {
-  const memberName = feedback?.member_first_name || feedback?.member_email || "Anonymous"
-  const memberPhoto =
-    feedback?.member_photo ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=random`
+  const memberName = feedback?.member_first_name || feedback?.member_email || "Anonymous";
+  const memberPhoto = feedback?.member_profile_image 
+    ? `https://res.cloudinary.com/mdarafathossen/${feedback.member_profile_image}`
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=random`
 
   const isOwner = currentUser?.id === feedback?.member
 

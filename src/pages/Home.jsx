@@ -7,6 +7,8 @@ import HomeServices from "../components/home/HomeServices";
 import HomeFeedback from "../components/home/HomeFeedback";
 import { Helmet } from "react-helmet";
 import BMICalculator from "../components/home/BMICalculator";
+import DiscountBanner from "../components/home/DiscountBanar";
+import DemoClass from "../components/home/DemoClass";
 
 const Home = () => {
   return (
@@ -21,6 +23,8 @@ const Home = () => {
         <CTASection />
         <HomeServices />
         <BMICalculator />
+        <DemoClass />
+        <DiscountBanner />
         <HomeFeedback />
     </>
   );

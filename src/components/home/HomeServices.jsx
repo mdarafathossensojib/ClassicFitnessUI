@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router"
 import apiClient from "../../services/api_client"
 import ErrorAlert from "../Alert/ErrorAlert";
+import { ArrowUpRight } from "lucide-react";
 
 export default function HomeServices() {
   const [services, setServices] = useState([]);
@@ -11,63 +12,85 @@ export default function HomeServices() {
     const fetchServices = async () => {
       try {
         const response = await apiClient.get("/services/")
-        setServices(response.data.slice(0, 4) || []) // শুধু top 4
+        setServices(response.data.slice(0, 4) || []) 
       } catch (error) {
-        setErrorMsg(error.response?.data);
+        setErrorMsg("Unable to fetch services." + (error.response?.data?.message || error.message));
         setServices([])
       }
     }
-
     fetchServices()
   }, [])
 
   if (services.length === 0) return null
 
   return (
-    <section className="bg-zinc-950 py-12">
-        {errorMsg && <ErrorAlert message={errorMsg} /> }
+    <section className="bg-zinc-950 py-24 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-white">Our Services</h2>
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 text-red-600 font-bold text-xs uppercase tracking-[0.3em]">
+              <span className="w-12 h-0.5 bg-red-600"></span>
+              Expertise
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-none">
+              PUSH YOUR <br /> <span className="text-red-600">LIMITS</span>
+            </h2>
+          </div>
+          
           <Link
             to="/services"
-            className="text-red-600 hover:text-red-700 font-semibold"
+            className="group flex items-center gap-3 bg-zinc-900 border border-zinc-800 text-white px-8 py-4 rounded-full font-bold hover:bg-red-600 hover:border-red-600 transition-all duration-300 shadow-xl"
           >
-            View All
+            All Services <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {errorMsg && <div className="mb-8"><ErrorAlert message={errorMsg} /></div>}
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, idx) => (
             <div
               key={service.id}
-              className="relative overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800 transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{ animation: `fadeInUp 0.5s ease forwards`, animationDelay: `${idx * 0.1}s`, opacity: 0 }}
+              className="group relative h-112.5 overflow-hidden rounded-[2.5rem] bg-zinc-900 border border-zinc-800 transition-all duration-500 hover:border-red-600/50"
             >
-              {/* Image */}
+              {/* Background Image */}
               <img
                 src={`https://res.cloudinary.com/mdarafathossen/${service.image}`}
                 alt={service.name}
-                className="w-full h-64 object-cover"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
               />
+              
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                <h3 className="text-lg font-bold text-white">{service.name}</h3>
-                <p className="text-sm text-zinc-300 mt-1 line-clamp-2">{service.description}</p>
+              {/* Card Content */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                {/* Top: Index Number */}
+                <div className="text-4xl font-black text-white/10 group-hover:text-red-600/20 transition-colors duration-500">
+                  0{idx + 1}
+                </div>
+
+                {/* Bottom: Info */}
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">
+                    {service.name}
+                  </h3>
+                  <div className="h-0 overflow-hidden group-hover:h-20 transition-all duration-500 ease-in-out">
+                    <p className="text-zinc-400 text-sm line-clamp-3">
+                      {service.description}
+                    </p>
+                  </div>
+                  
+                  {/* Subtle Indicator */}
+                  <div className="mt-4 w-10 h-1 bg-red-600 rounded-full group-hover:w-full transition-all duration-500"></div>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* FadeInUp Animation */}
-      <style>{`
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </section>
   )
 }
