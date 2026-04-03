@@ -3,6 +3,7 @@ import { Link } from "react-router"
 import apiClient from "../../services/api_client"
 import Loading from "../Alert/Loading";
 import ErrorAlert from "../Alert/ErrorAlert";
+import { ArrowRight } from "lucide-react";
 
 export default function HomeGallery() {
   const [gallery, setGallery] = useState([])
@@ -10,62 +11,99 @@ export default function HomeGallery() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    setLoading(true);
     const fetchGallery = async () => {
       try {
+        setLoading(true);
         const response = await apiClient.get("/gallery/")
         setGallery(response.data.slice(0, 4) || []) 
       } catch (error) {
-        setErrorMsg(error.response?.data);
+        setErrorMsg("Failed to load gallery items." + (error.response?.data?.message || ""));
         setGallery([])
       } finally {
-      setLoading(false);
+        setLoading(false);
       }
     }
-
     fetchGallery()
   }, [])
 
-  if (gallery.length === 0) return null
+  if (!loading && gallery.length === 0) return null
 
   return (
-    <section className="bg-zinc-950">
-        {errorMsg && <ErrorAlert message={errorMsg} /> }
-      <div className="py-8 px-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-white">Gallery</h2>
+    <section className="bg-zinc-950 py-16 px-6 overflow-hidden">
+      <div className="container mx-auto">
+        {/* Header Section */}
+        <div className="flex items-end justify-between mb-10">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-red-600 font-bold text-xs uppercase tracking-widest">
+              <span className="w-10 h-0.5 bg-red-600"></span>
+              Visual Tour
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase">
+              Gym <span className="text-red-600">Atmosphere</span>
+            </h2>
+          </div>
+          
           <Link
             to="/gallery"
-            className="text-red-600 hover:text-red-700 text-sm font-semibold"
+            className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-semibold text-sm"
           >
-            View All
+            Explore Full Gallery
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform text-red-600" />
           </Link>
         </div>
-        {loading ? (
-          <Loading />
-        ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {gallery.map((item) => (
-            <div
-              key={item.id}
-              className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 group"
-            >
-              {/* Image */}
-              <img
-                src={`https://res.cloudinary.com/mdarafathossen/${item.image}`}
-                alt={item.name}
-                className="w-full h-60 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              />
 
-              {/* Title overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-black/50 px-2 py-1">
-                <h3 className="text-sm font-semibold text-white truncate">
-                  {item.title}
-                </h3>
+        {errorMsg && <div className="mb-6"><ErrorAlert message={errorMsg} /></div>}
+
+        {loading ? (
+          <div className="h-60 flex items-center justify-center"><Loading /></div>
+        ) : (
+          /* Bento-inspired Grid Layout */
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto md:h-125">
+            {/* First Image (Large/Featured) */}
+            {gallery[0] && (
+              <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl border border-zinc-800">
+                <img
+                  src={`https://res.cloudinary.com/mdarafathossen/${gallery[0].image}`}
+                  alt={gallery[0].title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <h3 className="text-white font-bold text-lg italic uppercase">{gallery[0].title}</h3>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            )}
+
+            {/* Second Image (Long) */}
+            {gallery[1] && (
+              <div className="md:col-span-2 relative group overflow-hidden rounded-2xl border border-zinc-800 h-60 md:h-full">
+                <img
+                  src={`https://res.cloudinary.com/mdarafathossen/${gallery[1].image}`}
+                  alt={gallery[1].title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                   <h3 className="text-white font-bold italic uppercase">{gallery[1].title}</h3>
+                </div>
+              </div>
+            )}
+
+            {/* Third and Fourth Images (Small) */}
+            {gallery.slice(2, 4).map((item) => (
+              <div
+                key={item.id}
+                className="relative group overflow-hidden rounded-2xl border border-zinc-800 h-60 md:h-full"
+              >
+                <img
+                  src={`https://res.cloudinary.com/mdarafathossen/${item.image}`}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <h3 className="text-white font-bold text-sm italic uppercase">{item.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </section>

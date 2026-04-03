@@ -6,6 +6,7 @@ import HomeGallery from "../components/home/HomeGallery";
 import HomeServices from "../components/home/HomeServices";
 import HomeFeedback from "../components/home/HomeFeedback";
 import { Helmet } from "react-helmet";
+import BMICalculator from "../components/home/BMICalculator";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
         <HomeGallery />
         <CTASection />
         <HomeServices />
+        <BMICalculator />
         <HomeFeedback />
     </>
   );
