@@ -38,7 +38,7 @@ export default function HomeGallery() {
               <span className="w-10 h-0.5 bg-red-600"></span>
               Visual Tour
             </div>
-            <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase">
+            <h2 className="text-4xl font-black text-white uppercase">
               Gym <span className="text-red-600">Atmosphere</span>
             </h2>
           </div>

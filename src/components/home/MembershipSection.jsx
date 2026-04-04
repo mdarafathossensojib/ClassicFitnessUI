@@ -37,7 +37,7 @@ const MembershipSection = () => {
             Membership Plans
           </p>
           <h2 className="text-4xl font-bold uppercase tracking-tight text-white md:text-5xl">
-            Find Your Perfect Plan
+            Find Your <span className="text-red-600">Perfect</span> Plan
           </h2>
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-400">
             Flexible membership options to fit your lifestyle and fitness goals.

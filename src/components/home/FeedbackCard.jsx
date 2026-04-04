@@ -5,9 +5,10 @@ import ErrorAlert from "../Alert/ErrorAlert"
 import SuccessAlert from "../Alert/SuccessAlert"
 
 export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }) {
-  const memberName = feedback?.member_first_name || feedback?.member_email || "Anonymous";
-  const memberPhoto = feedback?.member_profile_image 
-    ? `https://res.cloudinary.com/mdarafathossen/${feedback.member_profile_image}`
+  console.log(feedback);
+  const memberName = feedback?.member_name || feedback?.member_email || "Anonymous";
+  const memberPhoto = feedback?.member_photo
+    ? feedback?.member_photo
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=random`
 
   const isOwner = currentUser?.id === feedback?.member
@@ -120,6 +121,7 @@ export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }
         />
         <div className="flex flex-col">
           <span className="text-sm font-bold text-white leading-none">{memberName}</span>
+          <span className="text-[10px] text-zinc-400  tracking-widest mt-1 font-semibold">Email: {feedback?.member_email}</span>
           <span className="text-[10px] text-zinc-500 uppercase tracking-widest mt-1 font-semibold">Verified Member</span>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function HomeFeedback() {
   return (
     <section className="bg-zinc-950 py-8 px-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-white">User Feedback</h2>
+        <h2 className="text-4xl font-bold text-white uppercase">User Feedback</h2>
         <Link
           to="/feedback"
           className="text-red-600 hover:text-red-700 font-semibold"

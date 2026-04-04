@@ -50,7 +50,7 @@ const ProgramsSection = () => {
             Our Programs
           </p>
           <h2 className="text-4xl font-bold uppercase tracking-tight text-white md:text-5xl">
-            Train Like a Champion
+            Train Like a <span className="text-red-600">Champion</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-400">
             Choose from our diverse range of world-class programs designed to

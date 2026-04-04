@@ -33,7 +33,7 @@ export default function HomeServices() {
               <span className="w-12 h-0.5 bg-red-600"></span>
               Expertise
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-none">
+            <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-none">
               PUSH YOUR <br /> <span className="text-red-600">LIMITS</span>
             </h2>
           </div>

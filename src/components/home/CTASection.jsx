@@ -13,7 +13,7 @@ const CTASection = () => {
           Ready to Begin?
         </p>
         <h2 className="text-4xl font-bold uppercase tracking-tight text-white md:text-5xl lg:text-6xl">
-          Your Transformation
+          Your <span className="text-red-600">Transformation</span>
           <br />
           Starts Today
         </h2>

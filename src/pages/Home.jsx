@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import BMICalculator from "../components/home/BMICalculator";
 import DiscountBanner from "../components/home/DiscountBanar";
 import DemoClass from "../components/home/DemoClass";
+import StudentAchievement from "../components/home/StudentAchievement";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
         <BMICalculator />
         <DemoClass />
         <DiscountBanner />
+        <StudentAchievement />
         <HomeFeedback />
     </>
   );

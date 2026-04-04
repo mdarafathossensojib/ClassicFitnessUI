@@ -30,7 +30,7 @@ export default function DemoClass() {
               <span className="w-10 h-0.5 bg-red-600"></span>
               Virtual Training
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase">
+            <h2 className="text-4xl font-black text-white uppercase">
               Free <span className="text-red-600">Demo</span> Classes
             </h2>
         </div>
