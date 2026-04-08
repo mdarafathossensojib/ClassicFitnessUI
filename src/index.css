@@ -23,6 +23,21 @@
   background: #555;
 }
 
+/* Custom Scrollbar for a clean look */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #27272a; /* zinc-800 */
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ef4444; /* red-500 */
+}
+
 html, body, #root {
   height: 100%;
 }

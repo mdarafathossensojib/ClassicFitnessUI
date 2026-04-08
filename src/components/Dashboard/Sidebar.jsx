@@ -113,7 +113,7 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
           </nav>
 
           {/* Logout */}
-          <div className="border-t border-zinc-800 px-3 py-4">
+          <div className="mt-auto border-t border-zinc-800 px-3 py-4 shrink-0">
             <button
               onClick={handleLogoutUser}
               className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"

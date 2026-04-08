@@ -5,7 +5,6 @@ import ErrorAlert from "../Alert/ErrorAlert"
 import SuccessAlert from "../Alert/SuccessAlert"
 
 export default function FeedbackCard({ feedback, currentUser, refreshFeedbacks }) {
-  console.log(feedback);
   const memberName = feedback?.member_name || feedback?.member_email || "Anonymous";
   const memberPhoto = feedback?.member_photo
     ? feedback?.member_photo
