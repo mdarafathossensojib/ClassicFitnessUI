@@ -10,6 +10,7 @@ import BMICalculator from "../components/home/BMICalculator";
 import DiscountBanner from "../components/home/DiscountBanar";
 import DemoClass from "../components/home/DemoClass";
 import StudentAchievement from "../components/home/StudentAchievement";
+import AIMealBanner from "../components/home/AIMealBanner";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
         <CTASection />
         <HomeServices />
         <BMICalculator />
+        <AIMealBanner />
         <DemoClass />
         <DiscountBanner />
         <StudentAchievement />

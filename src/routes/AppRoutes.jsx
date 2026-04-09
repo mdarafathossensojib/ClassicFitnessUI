@@ -36,6 +36,8 @@ import MyAttendance from "../components/Dashboard/Attendence/MyAttendence";
 import NewPassword from "../components/Registration/NewPassword";
 import AdminContact from "../components/Admin/Contact/AdminContact";
 import AdminFreeTrial from "../components/Admin/FreeTrail/AdminFreeTrial";
+import AIAssistant from "../pages/AIAssistant";
+import AIPlans from "../components/Dashboard/AIPlans";
 
 
 const AppRoutes = () => {
@@ -78,6 +80,7 @@ const AppRoutes = () => {
                 <Route path="my-booking" element={<MyBookings />} />
                 <Route path="my-attendance" element={<MyAttendance />} />
                 <Route path="my-plan" element={<MySubscription />} />
+                <Route path="ai-plans" element={<AIPlans />} />
                 <Route path="payment/history" element={<PaymentHistory />} />
                 <Route path="payment/success/" element={<PaymentSuccess />} />
                 
@@ -92,6 +95,16 @@ const AppRoutes = () => {
                 <Route path="admin/contact" element={<AdminContact />} />
                 <Route path="admin/free-trial" element={<AdminFreeTrial />} />
             </Route>
+
+            {/* AI Assistant Route */}
+            <Route
+                path="ai-assistant"
+                element={
+                    <PrivateRoute>
+                        <AIAssistant />
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     );
 };

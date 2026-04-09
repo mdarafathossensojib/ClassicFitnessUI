@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 
 const ProgramSlide = ({ title, description, iconComponent: IconComponent, image, programId }) => {
-    console.log("Rendering ProgramSlide for programId:", programId);
     return (
        <div className="group relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 transition-all hover:border-red-600/50">
             {/* Image */}

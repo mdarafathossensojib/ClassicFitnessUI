@@ -17,7 +17,7 @@ import {
   CalendarCheck,
   Home,
   FileText,
-  Mail
+  Mail, Sparkles
 } from "lucide-react";
 import useAuthContext from "../../hooks/useAuthContext";
 
@@ -37,6 +37,7 @@ export default function DashboardSidebar({ sidebarOpen, closeSidebar }) {
     { label: "Home", to: "/", icon: Home },
     { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
     { label: "Profile", to: "/dashboard/profile", icon: User },
+    { label: "AI Recommendations", to: "/dashboard/ai-plans", icon: Sparkles },
     { label: "My Classes", to: "/dashboard/my-booking", icon: BookOpen },
     { label: "My Attendance", to: "/dashboard/my-attendance", icon: CalendarCheck },
     { label: "My Plans", to: "/dashboard/my-plan", icon: Dumbbell },
