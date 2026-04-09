@@ -1,4 +1,5 @@
 import { Utensils, Sparkles } from "lucide-react";
+import { Link } from "react-router";
 
 export default function AIMealBanner() {
   return (
@@ -19,9 +20,9 @@ export default function AIMealBanner() {
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">
                 Our AI will automatically create a diet chart based on your body type and goals. The right diet along with the gym will help you reach your goals faster.
               </p>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-xl shadow-red-600/20">
+              <Link to="/ai-assistant" className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-xl shadow-red-600/20">
                 Get My Meal Plan
-              </button>
+              </Link>
             </div>
             <div className="relative">
                <div className="bg-zinc-800 p-8 rounded-[2.5rem] border border-zinc-700 rotate-3 group-hover:rotate-0 transition-transform duration-500">

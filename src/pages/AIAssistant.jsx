@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Sparkles, Bot, User } from "lucide-react";
+import { Sparkles, Bot, User, ArrowLeft } from "lucide-react";
 import authApiClient from "../services/auth_api_client";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router";
 
 export default function AIAssistant() {
   const [messages, setMessages] = useState([
@@ -23,8 +25,17 @@ export default function AIAssistant() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>AI Assistant</title>
+    </Helmet>
     <div className="min-h-screen bg-zinc-950 pt-24 pb-12 px-6">
+      <Link to="/" className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200">
+          <ArrowLeft className="h-4 w-4" />
+          Back to Home
+        </Link>
       <div className="max-w-4xl mx-auto bg-zinc-900 rounded-4xl border border-zinc-800 overflow-hidden flex flex-col h-[80vh]">
+        
         {/* Chat Header */}
         <div className="p-6 border-b border-zinc-800 bg-zinc-900/50 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -76,5 +87,6 @@ export default function AIAssistant() {
         </div>
       </div>
     </div>
+    </>
   );
 }
