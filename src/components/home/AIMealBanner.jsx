@@ -1,13 +1,36 @@
 import { Utensils, Sparkles } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuthContext from "../../hooks/useAuthContext";
+import { useState } from "react";
+import ErrorAlert from "../Alert/ErrorAlert";
 
 export default function AIMealBanner() {
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleAIClick = (e, to) => {
+    if (!user) {
+      e.preventDefault();
+      setErrorMsg("Please login first to use AI Assistant!");
+      
+      setTimeout(() => setErrorMsg(""), 4000);
+    } else {
+      navigate(to);
+    }
+  };
+
   return (
     <section className="py-20 px-6 bg-black">
       <div className="container mx-auto">
         <div className="bg-linear-to-br from-zinc-900 to-black border border-zinc-800 p-10 md:p-20 rounded-[3rem] relative overflow-hidden group">
           {/* Shine effect */}
           <div className="absolute inset-0 bg-linear-to-r from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          {errorMsg && (
+            <div className="fixed top-20 right-5 z-100">
+              <ErrorAlert message={errorMsg} />
+            </div>
+          )}
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-xl">
@@ -20,7 +43,7 @@ export default function AIMealBanner() {
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">
                 Our AI will automatically create a diet chart based on your body type and goals. The right diet along with the gym will help you reach your goals faster.
               </p>
-              <Link to="/ai-assistant" className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-xl shadow-red-600/20">
+              <Link to="/ai-assistant" onClick={(e) => handleAIClick(e, "/ai-assistant")} className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-xl shadow-red-600/20">
                 Get My Meal Plan
               </Link>
             </div>
